@@ -1,0 +1,12 @@
+kind: CORS
+apiVersion: api.ibm.com/v1
+metadata:
+  name: testcors
+  namespace: default-project
+  version: '1.0'
+  tags: []
+spec:
+  rules:
+    - action: allow
+      originList:
+        - '*'

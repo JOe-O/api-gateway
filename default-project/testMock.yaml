@@ -1,0 +1,18 @@
+kind: API
+apiVersion: api.ibm.com/v1
+metadata:
+  name: testMock
+  version: '1.0'
+  namespace: default-project
+  tags:
+    - hello world
+  type: REST
+spec:
+  api-spec:
+    $path: ./testmock-spec.yml
+  policy-sequence:
+    - $ref: default-project:mock-invoke:1.0
+  properties:
+    $ref: cp4i-16-2-0:backend-url:1.0
+  cors:
+    $ref: default-project:testcors:1.0

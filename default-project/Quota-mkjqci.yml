@@ -1,0 +1,15 @@
+kind: Quota
+apiVersion: api.ibm.com/v1
+metadata:
+  name: Quota-mkjqci
+  namespace: default-project
+  version: '1.0'
+  tags: []
+spec:
+  maxRequest: 10000
+  interval: 4w
+  extensions:
+    dp-gateway:
+      apiVersion: api.ibm.com/v1
+      spec:
+        onLimitReach: block

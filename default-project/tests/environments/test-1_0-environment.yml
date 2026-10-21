@@ -1,0 +1,9 @@
+kind: environment
+apiVersion: api.ibm.com/v1
+metadata:
+  name: test-1_0-environment
+  namespace: default-project
+  version: '1.0'
+  tags: []
+spec:
+  variables: []

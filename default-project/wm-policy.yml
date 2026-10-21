@@ -1,0 +1,18 @@
+kind: StagedPolicySequence
+apiVersion: api.ibm.com/v1
+metadata:
+  name: wm-policy
+  namespace: default-project
+  version: '1.0'
+  tags: []
+  labels:
+    gatewayTypes:
+      - webMethods
+spec:
+  routing:
+    - $ref: default-project:invoke-wm-policy:1.0
+  transport:
+    - $ref: default-project:http:1.0
+    - $ref: default-project:http:1.0
+    - $ref: default-project:media:1.0
+    - $ref: default-project:bulk:1.0

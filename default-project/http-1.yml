@@ -1,0 +1,11 @@
+kind: SetMediaType
+apiVersion: api.ibm.com/v1
+metadata:
+  name: http-1
+  namespace: default-project
+  version: '1.0'
+  tags: []
+  labels:
+    gatewayTypes:
+      - webMethods
+spec: {}

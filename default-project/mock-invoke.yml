@@ -1,0 +1,76 @@
+kind: DataPowerAssembly
+apiVersion: api.ibm.com/v1
+metadata:
+  name: mock-invoke
+  namespace: default-project
+  version: '1.0'
+  tags: []
+  labels:
+    gatewayTypes:
+      - datapower
+spec:
+  x-ibm-configuration:
+    gateway: datapower-api-gateway
+    assembly:
+      execute:
+        - invoke:
+            version: 2.3.0
+            title: invoke
+            backend-type: detect
+            header-control:
+              type: blocklist
+              values: []
+            parameter-control:
+              type: allowlist
+              values: []
+            http-version: HTTP/1.1
+            timeout: 60
+            verb: keep
+            chunked-uploads: true
+            persistent-connection: true
+            cache-response: protocol
+            cache-ttl: 900
+            websocket-upgrade: false
+            graphql-send-type: detect
+            target-url: $(backend)
+            password: ''
+            tls-profile: backend-certificate-validation:1.0.0
+        - parse:
+            version: 2.2.0
+            title: parse
+            parse-settings-reference:
+              default: apic-default-parsesettings
+            use-content-type: true
+        - xml-to-json:
+            version: 2.0.0
+            title: xml-to-json
+            conversionType: badgerFish
+        - map:
+            inputs:
+              input:
+                schema:
+                  type: string
+                variable: message.body.Message.output.$
+                content: application/json
+            outputs:
+              output:
+                schema:
+                  type: string
+                variable: message.body.Message.output
+                content: application/json
+            actions:
+              - set: output
+                from: input
+            version: 2.1.0
+            title: map
+            options:
+              mapEmulateV4EmptyJSONObject: false
+              mapEmulateV4DefaultRequiredProps: false
+              mapEnablePostProcessingJSON: false
+              mapReferenceLimit: 1
+      catch: []
+    phase: realized
+    enforced: true
+    testable: true
+    cors:
+      enabled: true
