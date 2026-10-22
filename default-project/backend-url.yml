@@ -1,0 +1,13 @@
+kind: Properties
+apiVersion: api.ibm.com/v1
+metadata:
+  name: backend-url
+  namespace: cp4i-16-2-0
+  version: '1.0'
+  tags: []
+spec:
+  backend:
+    value: >-
+      https://dummy-test-https-cp4i-16-2-0.apps.cp4i-ms.megasoft-arabia.com/testmock
+    description: ''
+    encoded: false

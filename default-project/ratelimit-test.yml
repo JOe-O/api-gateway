@@ -1,0 +1,36 @@
+kind: Plan
+apiVersion: api.ibm.com/v1
+metadata:
+  name: ratelimit-test
+  namespace: default-project
+  version: '1.0'
+  tags:
+    - ratelimit
+  description: ''
+spec:
+  qos:
+    withQuota:
+      plan-limit:
+        - $ref: default-project:Quota-mkjqci:1.0
+  extensions:
+    webm-gateway:
+      apiVersion: api.ibm.com/v1
+      spec:
+        withRateLimit: []
+        pricing:
+          value: 0
+          currency: ''
+    dp-gateway:
+      apiVersion: api.ibm.com/v1
+      spec:
+        apis:
+          - $ref: default-project:testMock:1.0
+            operations:
+              - path: /test
+                method: get
+        withRateLimit:
+          - name: rate-limit
+            maxRequest: 3
+            interval: 1m
+  termsOfService: ''
+  license: ''

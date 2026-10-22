@@ -1,0 +1,11 @@
+kind: test
+apiVersion: api.ibm.com/v1
+metadata:
+  name: test
+  namespace: default-project
+  version: '1.0'
+  tags: []
+spec:
+  api:
+    $ref: default-project:testMock:1.0
+  request: []
