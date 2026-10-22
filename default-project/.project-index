@@ -43,7 +43,7 @@
       "filePath": "default-project/mock-invoke.yml",
       "docIndex": 0,
       "assetType": "resource",
-      "lastIndexed": 1792646723315,
+      "lastIndexed": 1792649995698,
       "schemaVersion": 1,
       "kind": "DataPowerAssembly",
       "name": "mock-invoke",
@@ -244,7 +244,7 @@
       "targetRefKind": "resource",
       "isValid": true,
       "createdAt": 1792646724452,
-      "lastValidated": 1792646724452
+      "lastValidated": 1792649995704
     },
     {
       "id": "a04f170c-a84f-48d5-b30b-d7cd766337eb",
